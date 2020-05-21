@@ -9,8 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $brand = $_POST['brand'];
         $price = $_POST['price'];
         $description = $_POST['description'];
-        $sizes = $_POST['sizes'];
-        if(isset($_FILES['img'])) {
+
+        var_dump($_FILES['img']);
+        if($_FILES['img']['error'] != 4) { //проверка, что файл загружен
             //удаляем старую фотку
             $old_img_name = $connect->query("SELECT img FROM product WHERE id='$id'")->fetch(PDO::FETCH_ASSOC)["img"];
             $img_dir = "C:\\Users\\shkar\\PhpstormProjects\\sneakershop\\customer's_mode\\img\\";
@@ -39,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $stmt->execute();
 
-        if(!empty($sizes)){
+        if(!empty($_POST['sizes'])){
+            $sizes = $_POST['sizes'];
             $connect->query("DELETE FROM sizes_of_models WHERE model_id='$id'")->execute();
             foreach ($sizes as $size)
                 $connect->query("INSERT INTO sizes_of_models SET size='$size', model_id='$id', quantity = 10")->execute();

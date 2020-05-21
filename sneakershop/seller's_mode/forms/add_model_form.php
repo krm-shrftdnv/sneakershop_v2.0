@@ -7,8 +7,8 @@ require_once "../parts/header.php";
 ?>
 
 <form enctype="multipart/form-data" action="../actions/add_model.php" method="post">
-    <input type="text" name="model" placeholder="Модель">
-    <select name="brand">
+    Модель: <input type="text" name="model" placeholder="Модель"><br>
+    Бренд: <select name="brand">
     <?php
     foreach ($brands as $brand) {
         ?>
@@ -16,9 +16,9 @@ require_once "../parts/header.php";
         <?php
     }
     ?>
-    </select>
-    <input type="text" name="price" placeholder="Цена"><br>
-
+    </select><br>
+    Цена: <input type="text" name="price" placeholder="Цена"><br>
+    Выберите размеры, которые будут доступны:<br>
     <?php
     $sizes = $connect->query("SELECT * FROM shoe_size")->fetchAll(PDO::FETCH_ASSOC);
     foreach ($sizes as $size) {
@@ -30,7 +30,7 @@ require_once "../parts/header.php";
     ?>
 
 <!--    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />-->
-    Прикрепить изображение: <input type="file" name="img">
-    <textarea name="description" placeholder="Описание"></textarea>
+    Прикрепить изображение: <input type="file" name="img"><br>
+    <textarea name="description" placeholder="Описание"></textarea><br>
     <input type="submit" value="Добавить">
 </form>

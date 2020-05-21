@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
     <h1 class="title  mb-5 mt-3">О товаре</h1>
     <div class="card">
         <!--        <a href="index.php">Вернуться на главную</a>-->
-        <img src="img/<?php echo $product['img'] ?>" style="max-height: 300px" class="card-img-top"
+        <img src="img/<?php echo $product['img'] ?>" style="max-height: 552px" class="card-img-top"
              alt="<?php echo $product['model'] ?> photo">
         <div class="card-body">
             <h5 class="card-title"><?php echo $product['model'] ?><?php echo $product['price'] ?></h5>
